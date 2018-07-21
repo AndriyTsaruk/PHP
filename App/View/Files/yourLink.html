@@ -1,0 +1,20 @@
+<div>
+    <h2 class="alert alert-success"><?php if(isset($data['message'])) {echo $data['message'];} ?><h2>
+</div>
+<div>
+    <h4><?php if(isset($data['link'])) {echo $data['link'];} ?><h4>
+</div>
+<br>
+<div>
+    <h4><?php if(isset($data['create_time'])) {echo 'Создана '.'<strong>'.$data['create_time'].'</strong>';} ?><h4>
+</div>
+<br>
+<div>
+    <h4><?php if(isset($data['duration'])) {echo 'Время действия, дней: '.'<strong>'.$data['duration'].'</strong>';} ?><h4>
+</div>
+<br>
+<div>
+    <?php if(isset($data['id'])): ?>
+        <h4><a class="btn btn-danger" href="/Files/deleteHash?id=<?=$data['id']?>">Удалить ссылку доступа</a></h4>
+    <?php endif ?>
+</div>

@@ -1,0 +1,22 @@
+<h2>Все доступные файлы</h2>
+<div>
+    <?php if (isset($data['error'])): ?>
+    <?php echo $data['error'];?>
+    <?php endif?>
+</div>
+<div class="col-sm-4">
+    <table class="table table-striped">
+        <?php if (isset($data['fileList'])): ?>
+        <?php foreach ($data['fileList'] as $key=>$value): ?>
+        <tr>
+            <td style="padding: 5px">
+                <?php echo $value['file_name'];?>
+            </td>
+            <td style="padding: 5px">
+                <a href="/files/fileInfo?id=<?=$value['id']?>">Подробнее</a>
+            </td>
+        </tr>
+        <?php endforeach?>
+        <?php endif?>
+    </table>
+</div>

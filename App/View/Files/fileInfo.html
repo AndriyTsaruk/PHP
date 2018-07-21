@@ -1,0 +1,25 @@
+<?php if (isset($data['error'])): ?>
+<?php echo $data['error']; ?>
+<?php else: ?>
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <th>Имя файла</th>
+                <th>Размер</th>
+                <th>Пользователь</th>
+                <th>Оригинальное имя</th>
+                <th>Создан</th>
+            </tr>
+            <tr>
+                <td><?php echo $data['file_name'] ?></td>
+                <td><?php echo $data['file_size'] ?></td>
+                <td><?php echo $data['user_name'] ?></td>
+                <td><?php echo $data['old_name'] ?></td>
+                <td><?php echo $data['date'] ?></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <a class="btn btn-success" href="/Files/download?id=<?=$_GET['id']?>">Скачать</a>
+    </div>
+<?php endif?>

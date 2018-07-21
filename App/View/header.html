@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Это наш первый сайт</title>
+    <link rel="stylesheet" href="http://localhost/static/css/main.css">
+    <link rel="stylesheet" href="http://localhost/static/css/bootstrap.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">EX.LOCAL</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li <?php if (isset($data['currentMenu']) and $data['currentMenu'] == 'shareFiles'):?> class="active"<?php endif?> ><a href="/files/allFiles">Файлы</a></li>
+                <?php if($hasUser): ?>
+                <li <?php if (isset($data['currentMenu']) and $data['currentMenu'] == 'files'):?> class="active"<?php endif?> ><a href="/files/myFileList">Мои файлы</a></li>
+                <li <?php if (isset($data['currentMenu']) and $data['currentMenu'] == 'upload'):?> class="active"<?php endif?> ><a href="/files/upload">Загрузить</a></li>
+                <?php endif?>
+            </ul>
+            <?php if($hasUser): ?>
+                <div class="navbar-right user-info">
+                    Добрый день, <a href="/person"><?php echo $UserName?></a> | <a href="/login/logout">Выйти</a>
+                </div>
+            <?php else: ?>
+                <form id="authForm" action="/login/auth" method="post" class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" id="loginInput" placeholder="Login" class="form-control" name="login">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="passwordInput" placeholder="Password" class="form-control" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-success">Войти</button>
+                    <a class="btn btn-success" href="/login/register">Регистрация</a>
+                </form>
+            <?php endif?>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="starter-template">
+
+
+
+
+
+
+
+
+
+

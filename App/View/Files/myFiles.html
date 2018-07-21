@@ -1,0 +1,46 @@
+<div class="col-sm-10">
+    <table class="table table-striped">
+        <th>Имя файла</th>
+        <th>Информация</th>
+        <th>Публичность</th>
+        <th>Открыть доступ</th>
+        <th>Ссылки доступа</th>
+        <?php if (isset($data['fileList'])): ?>
+            <?php foreach ($data['fileList'] as $key=>$value): ?>
+                <tr>
+                    <td style="padding: 5px">
+                        <?php echo $value['old_name'];?>
+                    </td>
+                    <td style="padding: 5px">
+                        <a href="/files/fileInfo?id=<?=$value['id']?>">Подробнее</a>
+                    </td>
+                    <?php if ($value['public'] == 0): ?>
+                    <td>
+                        <a href="/Files/fileInfo?id=<?=$value['id']?>&hash=<?=$value['hash']?>">Ссылка доступа на 1 день</a>
+                    </td>
+                    <?php else: ?>
+                    <td>
+                        Публичный
+                    </td>
+                    <?php endif ?>
+                    <td>
+                        <?php if ($value['public'] == 0): ?>
+                        <div>
+                            <form action="/files/durationAccess" method="get">
+                                <button class="btn btn-success">Открыть доступ на</button>
+                                <input type="hidden" name="id" value="<?=$value['id']?>">
+                                <input type="number" class="form-control" name="duration" value="1">
+                            </form>
+                        </div>
+                        <?php endif ?>
+                    </td>
+                    <td>
+                        <?php foreach ($value['allHashes'] as $key=>$value): ?>
+                        <a href="/Files/durationAccess?hash_id=<?=$value['id']?>&time_hash=<?=$value['time_hash']?>"><?=$value['create_time']?><br></a>
+                        <?php endforeach?>
+                    </td>
+                </tr>
+            <?php endforeach?>
+        <?php endif?>
+    </table>
+</div>

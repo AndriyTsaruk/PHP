@@ -1,0 +1,15 @@
+<div class="font" id="content">
+    <h3>Введите логин</h3>
+    <form action="/login/auth" method="post">
+        <?php echo (isset($data['error'])) ? '<p>'.$data['error'].'</p>' : ''?>
+        <label>
+            Логин
+            <input type="text" name="login">
+        </label>
+        <label>
+            Пароль
+            <input type="password" name="password">
+        </label>
+        <button>Войти</button>
+    </form>
+</div>

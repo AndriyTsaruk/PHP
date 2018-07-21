@@ -1,0 +1,26 @@
+<h2>Мои файлы</h2>
+<div class="col-sm-8">
+    <table class="table table-striped">
+        <?php if (isset($data['fileList'])): ?>
+            <?php foreach ($data['fileList'] as $key=>$value): ?>
+                <tr>
+                    <td style="padding: 5px">
+                        <?php echo $value['file_name'];?>
+                    </td>
+                    <td style="padding: 5px">
+                        <a href="/Files/file?id=<?=$value['id']?>">Подробнее</a>
+                    </td>
+                    <?php if ($value['public'] == 0): ?>
+                    <td>
+                        <a href="/Files/file?id=<?=$value['id']?>&hash=<?=$value['hash']?>">Прямая ссылка</a>
+                    </td>
+                    <?php else: ?>
+                    <td>
+                        Публичный
+                    </td>
+                    <?php endif ?>
+                </tr>
+        <?php endforeach?>
+        <?php endif?>
+    </table>
+</div>
